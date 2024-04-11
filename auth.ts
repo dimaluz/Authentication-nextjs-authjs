@@ -44,16 +44,16 @@ export const {
     }
   },
   callbacks: {
-    // async signIn({ user }) {
+    async signIn({ user, account }) {
+      // Allow OAuth without email verification
+      if (account?.provider !== 'credentials') return true;
 
-    //   const existedUser = await getUserById(user.id);
+      const existedUser = await getUserById(user.id);
 
-    //   if (!existedUser || !existedUser.emailVarified) {
-    //     return false;
-    //   }
+      if (!existedUser?.emailVerified) return false;
 
-    //   return true;
-    // },
+      return true;
+    },
 
     async session({ token, session }){
       
