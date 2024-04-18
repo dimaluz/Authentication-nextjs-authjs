@@ -5,6 +5,7 @@ import { FormSuccess } from "@/components/form-success"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { UserRole } from "@prisma/client"
+import { toast } from "sonner"
 
 
 const AdminPage = () => {
@@ -13,10 +14,10 @@ const AdminPage = () => {
         fetch('/api/admin')
             .then((response) => {
                 if (response.ok) {
-                    console.log('Ok!!!')
+                    toast.success('Allowed API Route!')
                 }
                 else{
-                    console.log('Forbiden!')
+                    toast.error('Forbidden API Route!')
                 }
             })
     }
@@ -39,7 +40,7 @@ const AdminPage = () => {
                         <p className='text-sm font-medium'>
                             Admin-only API route
                         </p>
-                        <Button>
+                        <Button onClick={onApiRouteClick}>
                             Click to test
                         </Button>
                     </div>
@@ -47,7 +48,7 @@ const AdminPage = () => {
                         <p className='text-sm font-medium'>
                             Admin-only Server action
                         </p>
-                        <Button>
+                        <Button onClick={onApiRouteClick}>
                             Click to test
                         </Button>
                     </div>
