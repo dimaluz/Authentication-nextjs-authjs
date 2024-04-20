@@ -23,7 +23,7 @@ export default function Home() {
         </p>
       </div>
       <div>
-        <LoginButton asChild={true}>
+        <LoginButton mode='modal' asChild>
           <Button 
             variant='secondary' 
             size='lg'
